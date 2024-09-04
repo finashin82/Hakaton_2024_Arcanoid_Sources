@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 151541159}
   - component: {fileID: 151541160}
   - component: {fileID: 151541161}
+  - component: {fileID: 151541162}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -483,7 +484,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _platform: {fileID: 622979039}
-  speed: 0.5
+  speed: 1
+--- !u!114 &151541162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151541156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9703a02ee9056742be0f0045236a6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!1 &336324965
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,9 +509,12 @@ GameObject:
   - component: {fileID: 336324968}
   - component: {fileID: 336324967}
   - component: {fileID: 336324966}
+  - component: {fileID: 336324969}
+  - component: {fileID: 336324970}
+  - component: {fileID: 336324971}
   m_Layer: 0
   m_Name: BlockYellow
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -607,13 +624,80 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336324965}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.57, y: 0.31, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.0100007, y: 0.31, z: 0}
   m_LocalScale: {x: 1.2257668, y: 0.4984, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &336324969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336324965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77464ff0214c6b948bddbf86a88af091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  healthEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 336324970}
+        m_TargetAssemblyTypeName: DestroyBlock, Assembly-CSharp
+        m_MethodName: DeathBlock
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 336324969}
+          m_ObjectArgumentAssemblyTypeName: Health, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 336324971}
+        m_TargetAssemblyTypeName: ColorBlock, Assembly-CSharp
+        m_MethodName: ColorBlockInGame
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 336324969}
+          m_ObjectArgumentAssemblyTypeName: Health, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &336324970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336324965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b01a2935b01cf45a43a86ac3fa57da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &336324971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336324965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6166fb8b9cdaf9149a57edb1e05979fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorYellow: 10
+  _colorBlue: 20
+  _colorRed: 30
 --- !u!1 &395784452
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,9 +709,12 @@ GameObject:
   - component: {fileID: 395784455}
   - component: {fileID: 395784454}
   - component: {fileID: 395784453}
+  - component: {fileID: 395784457}
+  - component: {fileID: 395784456}
+  - component: {fileID: 395784458}
   m_Layer: 0
   m_Name: BlockBlue
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -738,12 +825,79 @@ Transform:
   m_GameObject: {fileID: 395784452}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4, y: 0.31, z: 0}
+  m_LocalPosition: {x: 3.4, y: 1.37, z: 0}
   m_LocalScale: {x: 1.2257668, y: 0.4984, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &395784456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395784452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b01a2935b01cf45a43a86ac3fa57da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &395784457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395784452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77464ff0214c6b948bddbf86a88af091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  healthEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 395784456}
+        m_TargetAssemblyTypeName: DestroyBlock, Assembly-CSharp
+        m_MethodName: DeathBlock
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 395784457}
+          m_ObjectArgumentAssemblyTypeName: Health, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 395784458}
+        m_TargetAssemblyTypeName: ColorBlock, Assembly-CSharp
+        m_MethodName: ColorBlockInGame
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 395784457}
+          m_ObjectArgumentAssemblyTypeName: Health, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &395784458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395784452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6166fb8b9cdaf9149a57edb1e05979fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorYellow: 10
+  _colorBlue: 20
+  _colorRed: 30
 --- !u!1 &477610171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,9 +1261,12 @@ GameObject:
   - component: {fileID: 641729511}
   - component: {fileID: 641729510}
   - component: {fileID: 641729509}
+  - component: {fileID: 641729513}
+  - component: {fileID: 641729512}
+  - component: {fileID: 641729514}
   m_Layer: 0
   m_Name: BlockRed
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1220,12 +1377,79 @@ Transform:
   m_GameObject: {fileID: 641729508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.23, y: 0.31, z: 0}
+  m_LocalPosition: {x: 5.23, y: 2.29, z: 0}
   m_LocalScale: {x: 1.2257668, y: 0.4984, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &641729512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641729508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b01a2935b01cf45a43a86ac3fa57da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &641729513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641729508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77464ff0214c6b948bddbf86a88af091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
+  healthEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 641729512}
+        m_TargetAssemblyTypeName: DestroyBlock, Assembly-CSharp
+        m_MethodName: DeathBlock
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 641729513}
+          m_ObjectArgumentAssemblyTypeName: Health, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 641729514}
+        m_TargetAssemblyTypeName: ColorBlock, Assembly-CSharp
+        m_MethodName: ColorBlockInGame
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 641729513}
+          m_ObjectArgumentAssemblyTypeName: Health, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &641729514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641729508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6166fb8b9cdaf9149a57edb1e05979fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorYellow: 10
+  _colorBlue: 20
+  _colorRed: 30
 --- !u!1 &741125137
 GameObject:
   m_ObjectHideFlags: 0
