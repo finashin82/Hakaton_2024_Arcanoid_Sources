@@ -8,7 +8,7 @@ public class BallJump : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private bool ballIsActive;
+    private bool isActiveBall;
     private Vector3 ballPosition;
     private Vector2 ballInitialForce;
 
@@ -16,28 +16,26 @@ public class BallJump : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         // создаем силу
         ballInitialForce = new Vector2(100.0f, 300.0f);
 
         // переводим в неактивное состояние
-        ballIsActive = false;
+        isActiveBall = false;
 
         // запоминаем положение
         ballPosition = transform.position;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         // проверка нажатия на пробел
         if (Input.GetButtonDown("Jump") == true)
         {
             // проверка состояния
-            if (!ballIsActive)
+            if (!isActiveBall)
             {
                 // сброс всех сил
                 rb.isKinematic = false;
@@ -46,11 +44,11 @@ public class BallJump : MonoBehaviour
                 rb.AddForce(ballInitialForce);
 
                 // зададим активное состояние
-                ballIsActive = !ballIsActive;
+                isActiveBall = !isActiveBall;
             }
         }
 
-        if (!ballIsActive && _platform != null)
+        if (!isActiveBall && _platform != null)
         {
             // задаем новую позицию шарика
             ballPosition.x = _platform.transform.position.x;

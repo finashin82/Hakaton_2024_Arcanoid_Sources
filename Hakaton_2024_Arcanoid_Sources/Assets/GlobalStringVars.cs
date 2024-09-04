@@ -1,4 +1,5 @@
 public class GlobalStringVars
-{   
-    public const string _horizontalAxis = "Horizontal";    
+{
+    public const string _horizontalAxis = "Horizontal";
 }
+    
