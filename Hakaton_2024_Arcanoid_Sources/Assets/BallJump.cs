@@ -6,11 +6,13 @@ public class BallJump : MonoBehaviour
 {
     [SerializeField] private GameObject _platform;
 
+    [SerializeField] private float speed;
+
     private Rigidbody2D rb;
 
     private bool isActiveBall;
     private Vector3 ballPosition;
-    private Vector2 ballInitialForce;
+    private Vector2 ballForce;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class BallJump : MonoBehaviour
     void Start()
     {
         // создаем силу
-        ballInitialForce = new Vector2(100.0f, 300.0f);
+        ballForce = new Vector2(100.0f, 300.0f);
 
         // переводим в неактивное состояние
         isActiveBall = false;
@@ -32,16 +34,16 @@ public class BallJump : MonoBehaviour
     void Update()
     {
         // проверка нажатия на пробел
-        if (Input.GetButtonDown("Jump") == true)
+        if (Input.GetButtonDown("Jump"))
         {
             // проверка состояния
             if (!isActiveBall)
             {
                 // сброс всех сил
-                rb.isKinematic = false;
+                //rb.isKinematic = false;
 
                 // применим силу
-                rb.AddForce(ballInitialForce);
+                rb.AddForce(ballForce * speed);
 
                 // зададим активное состояние
                 isActiveBall = !isActiveBall;
