@@ -14,6 +14,8 @@ public class WinLevel : MonoBehaviour
     public int BlocksCount => blocksCount;
 
     int blocksCount;
+
+    [SerializeField] private UnityEvent<WinLevel> winLevel;
         
     void Update()
     {
@@ -29,7 +31,7 @@ public class WinLevel : MonoBehaviour
 
            _winPanel.SetActive(true);
 
-            
+            winLevel?.Invoke(this);
         }
     }
 }
